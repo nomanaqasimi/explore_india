@@ -1,0 +1,193 @@
+/* ═══════════════════════════════════════════════════════════════
+   base.css — ExploreIndia Global Styles
+   Shared across every page. Import this FIRST, then the page CSS.
+   Sections:
+     1.  CSS Variables (design tokens)
+     2.  Reset
+     3.  Typography helpers
+     4.  Navbar
+     5.  Footer
+     6.  Shared buttons
+     7.  Scroll reveal utility
+     8.  Hero entry animations
+     9.  Responsive nav/footer
+═══════════════════════════════════════════════════════════════ */
+
+/* ── 1. CSS VARIABLES ─────────────────────────────────────────── */
+:root {
+  /* Colors */
+  --bg:        #080502;
+  --bg2:       #0a0503;
+  --card-bg:   #140c05;
+  --deep:      #1e0f05;
+  --orange:    #ff6b1a;
+  --amber:     #ffb573;
+  --cream:     #fcf5eb;
+  --cream80:   rgba(252,245,235,0.80);
+  --cream60:   rgba(252,245,235,0.60);
+  --cream45:   rgba(252,245,235,0.45);
+  --cream30:   rgba(252,245,235,0.30);
+
+  /* Orange tints */
+  --o10:  rgba(255,107,26,0.10);
+  --o18:  rgba(255,107,26,0.18);
+  --o25:  rgba(255,107,26,0.25);
+  --o35:  rgba(255,107,26,0.35);
+  --o50:  rgba(255,107,26,0.50);
+  --o70:  rgba(255,107,26,0.70);
+
+  /* Easing */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── 2. RESET ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html  { scroll-behavior: smooth; }
+body  { background: var(--bg); color: var(--cream); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+img   { display: block; max-width: 100%; }
+a     { text-decoration: none; color: inherit; }
+button { font-family: inherit; cursor: pointer; border: none; outline: none; background: none; }
+ul, ol { list-style: none; }
+
+/* ── 3. TYPOGRAPHY HELPERS ────────────────────────────────────── */
+.text-amber  { color: var(--amber); }
+.text-orange { color: var(--orange); }
+.text-cream  { color: var(--cream); }
+.text-muted  { color: var(--cream60); }
+
+/* ── 4. NAVBAR ────────────────────────────────────────────────── */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: 80px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px;
+  background: rgba(8,5,2,0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(191,185,185,0.18);
+  z-index: 999;
+  transition: background 0.4s ease;
+}
+.navbar.scrolled { background: rgba(8,5,2,0.96); }
+
+.navbar__logo img { height: 46px; }
+
+.navbar__links {
+  display: flex; align-items: center; gap: 36px;
+}
+.navbar__links a {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px; font-weight: 500; color: #fff;
+  position: relative; transition: color 0.2s;
+}
+.navbar__links a::after {
+  content: ''; position: absolute; bottom: -3px; left: 0;
+  width: 0; height: 2px; background: var(--amber); border-radius: 2px;
+  transition: width 0.25s ease;
+}
+.navbar__links a:hover,
+.navbar__links a.active { color: var(--amber); }
+.navbar__links a:hover::after,
+.navbar__links a.active::after { width: 100%; }
+
+.navbar__actions { display: flex; align-items: center; gap: 12px; }
+
+.btn-login {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px; font-weight: 600;
+  color: var(--orange); background: #3f1f0a;
+  border: 2px solid #c0581f; border-radius: 18px; padding: 7px 22px;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-login:hover { background: #5a2d10; transform: translateY(-1px); }
+
+.btn-plan-nav {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px; font-weight: 600;
+  color: #fff; background: var(--orange);
+  border-radius: 18px; padding: 8px 22px;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.btn-plan-nav:hover { background: #e55c0f; transform: translateY(-1px); box-shadow: 0 6px 22px var(--o50); }
+
+/* ── 5. FOOTER ────────────────────────────────────────────────── */
+.site-footer {
+  background: var(--bg2);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  min-height: 180px;
+  display: flex; align-items: center;
+  padding: 0 80px; justify-content: space-between;
+  flex-wrap: wrap; gap: 24px;
+}
+.site-footer__logo img { height: 52px; }
+.site-footer__links { display: flex; gap: 48px; flex-wrap: wrap; }
+.site-footer__links a {
+  font-size: 14px; color: var(--cream60);
+  transition: color 0.2s;
+}
+.site-footer__links a:hover { color: var(--cream); }
+.site-footer__copy { font-size: 12px; color: var(--cream30); }
+
+/* ── 6. SHARED BUTTONS ────────────────────────────────────────── */
+.btn-primary {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px; font-weight: 600;
+  color: #fff; background: var(--orange);
+  border-radius: 100px; padding: 14px 32px;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.btn-primary:hover { background: #e55c0f; transform: translateY(-2px); box-shadow: 0 10px 32px var(--o50); }
+
+.btn-ghost {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px; font-weight: 500;
+  color: var(--cream);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 100px; padding: 14px 30px;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.15); transform: translateY(-1px); }
+
+.btn-cta {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px; font-weight: 600;
+  color: #fff; background: var(--orange);
+  border-radius: 100px; padding: 15px 34px;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.18s, box-shadow 0.2s;
+}
+.btn-cta:hover { background: #e55c0f; transform: translateY(-2px) scale(1.03); box-shadow: 0 10px 32px var(--o50); }
+
+/* ── 7. SCROLL REVEAL ─────────────────────────────────────────── */
+.reveal {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.08s; }
+.reveal-delay-2 { transition-delay: 0.16s; }
+.reveal-delay-3 { transition-delay: 0.24s; }
+.reveal-delay-4 { transition-delay: 0.32s; }
+.reveal-delay-5 { transition-delay: 0.40s; }
+
+/* ── 8. HERO ENTRY ANIMATIONS ─────────────────────────────────── */
+.hero__badge, .hero__title, .hero__subtitle, .hero__buttons, .hero__stats {
+  opacity: 0; transform: translateY(22px);
+  animation: heroUp 0.75s var(--ease) forwards;
+}
+.hero__badge    { animation-delay: 0.10s; }
+.hero__title    { animation-delay: 0.22s; }
+.hero__subtitle { animation-delay: 0.34s; }
+.hero__buttons  { animation-delay: 0.44s; }
+.hero__stats    { animation-delay: 0.56s; }
+@keyframes heroUp { to { opacity: 1; transform: translateY(0); } }
+
+/* ── 9. RESPONSIVE NAV / FOOTER ───────────────────────────────── */
+@media (max-width: 900px) {
+  .navbar { padding: 0 24px; }
+  .navbar__links { display: none; }
+  .site-footer { padding: 40px 28px; flex-direction: column; text-align: center; }
+  .site-footer__links { gap: 24px; justify-content: center; }
+}
