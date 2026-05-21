@@ -1,0 +1,266 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image:
+linear-gradient(
+    to top,
+    rgba(0,0,0,0.9),
+    rgba(0,0,0,0.4),
+    rgba(0,0,0,0.1)
+),
+url('../images/login/background.jpg');
+    background-size: cover;
+     font-family: 'poppins', sans-serif;
+    font-size: 28px;
+}
+
+.log_in_container{
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    gap: 20px;
+    border-radius: 10px;
+    padding: 20px;
+    width: 90% ;
+   
+      background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.18),
+    rgba(255,255,255,0.05),
+    rgba(255,255,255,0)
+);
+border-top: 1px solid rgba(255,255,255,0.3);
+border-left: 1px solid rgba(255,255,255,0.3);
+border-right: 1px solid rgba(255,255,255,0.3);
+    box-shadow: 8px 0px 32px rgba(0,0,0,0.3);
+}
+.branding{
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-bottom: 20px;
+    font-family: 'poppins', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+}
+.form_group{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width:100%;
+}
+.log_in{
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    flex-direction: column;
+    font-size: 24px;
+     padding: 20px;
+     border-radius: 10px;
+    align-items: center;
+    background: linear-gradient(
+    to bottom,
+    rgba(255, 136, 0, 0.18),
+    rgba(255,255,255,0.05),
+    rgba(255,255,255,0)
+    );
+    border-top: 1px solid rgba(255,255,255,0.3);
+border-left: 1px solid rgba(255,255,255,0.3);
+border-right: 1px solid rgba(255,255,255,0.3);
+    box-shadow: 8px 0px 32px rgba(0,0,0,0.3);
+}
+.signin h2{
+     margin-top: 5%; 
+        font-size: 40px;
+        color: rgb(0, 0, 0);
+        font-weight: bold;
+        position: relative;
+    }
+    .register {
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+    }
+
+#email, #password {
+    display: block; /* Flex can cause unexpected stretching on inputs */
+    width: 100%;    /* Makes the box fit perfectly within its parent form */
+    text-align: left; /* Ensures text starts exactly at the left edge */
+    padding: 12px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 18px;
+}
+#remember_me{
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    font-weight: normal;
+    text-shadow: 2px 0px 10px black;
+}
+  #log_in_button{
+    margin-top: 20px;
+    margin-left: 25%;
+    /* align-self: center; */
+    width: 120PX;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+
+    background-color: rgb(236, 138, 25);
+    color: white;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: rgb(255, 123, 0);
+}
+    .info{
+    margin-bottom: 15%;
+    font-size: 18px; 
+    color: rgb(255, 255, 255);
+    font-weight: lighter;
+    letter-spacing: 1px;
+
+}
+    #welcome{margin-bottom: 15%;
+    font-size: 42px; 
+    color: rgb(255, 255, 255);
+    line-height: 1.2;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5)
+        
+    }
+    #explore, #india{
+        font-size: 40px;
+        color: rgb(255, 123, 0);
+        font-weight: bold;
+        text-shadow: 2px 2px 7px rgb(56, 55, 55);
+    }
+    .logo{
+    width: 100px;
+     height: 100px;
+     position: relative;
+        display: flex;
+    }
+    #traveller{
+        margin-top: 10px;
+        font-size: 50px;
+        color: rgb(255, 123, 0);
+        font-weight: bold;
+    }
+    /* ==========================================================================
+   Google Login Button & Divider Styles
+   ========================================================================== */
+
+/* The "or" Separator */
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    margin: 20px 0;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.divider:not(:empty)::before {
+    margin-right: .5em;
+}
+
+.divider:not(:empty)::after {
+    margin-left: .5em;
+}
+
+/* Google Button Structural Setup */
+.google_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px; /* Gap between the icon and text */
+    
+    width: 100%; /* Spans the full width of your form */
+    max-width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    margin-left: 0; /* Keeps it centered relative to the form */
+    align-self: center;
+
+    background-color: #ffffff;
+    color: #1f1f1f;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+/* Subtle Hover Effect */
+.google_btn:hover {
+    background-color: #f1f1f1;
+}
+
+/* Active Press Effect */
+.google_btn:active {
+    transform: scale(0.98);
+}
+
+/* Stop SVG from scaling erratically */
+.google_btn svg {
+    display: block;
+    flex-shrink: 0;
+}
+#forgot_password {
+    display: flex;
+    font-size: 14px;
+    color: rgb(255, 123, 0);
+    text-decoration: none;
+    font-weight: normal;
+    text-shadow: 1px 1px 5px black;
+}
+@media (max-width: 700px) {
+    .log_in_container {
+        flex-direction: column;
+        width: 95%;
+        min-height: auto;
+    }
+    .log_in {
+        border-radius: 0 0 20px 20px;
+        padding: 32px 24px;
+    }
+    .branding {
+        padding: 28px 24px 24px;
+    }
+    .vertical-divider { display: none; }
+    #welcome { font-size: 32px; }
+    #traveller { font-size: 38px; }
+}

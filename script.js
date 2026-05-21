@@ -155,5 +155,11 @@ document.addEventListener('DOMContentLoaded', function () {
       relObs.observe(c);
     });
   }
+  var loginBtn = document.querySelector('.btn-login');
+  if (loginBtn) {
+    loginBtn.addEventListener('click', function () {
+      window.location.href = 'login.html'; 
+    });
+  }
 
 });
