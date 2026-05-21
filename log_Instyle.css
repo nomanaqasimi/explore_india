@@ -16,7 +16,7 @@ linear-gradient(
     rgba(0,0,0,0.4),
     rgba(0,0,0,0.1)
 ),
-url('../images/login/background.jpg');
+url('./images/login/background.jpg');
     background-size: cover;
      font-family: 'poppins', sans-serif;
     font-size: 28px;
