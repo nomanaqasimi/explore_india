@@ -141,6 +141,7 @@ a      { text-decoration: none; }
   overflow: hidden;
   display: flex;
   align-items: center;
+  width:100%;
 }
 
 .hero__bg {
@@ -153,6 +154,7 @@ a      { text-decoration: none; }
   transform: scale(1.07);
   transition: transform 10s ease-out;
   will-change: transform;
+  width: 100%;
 }
 .hero__bg.loaded { transform: scale(1); }
 
