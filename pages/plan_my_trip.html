@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan My Trip — Explore India</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/plan_my_trip.css">
+</head>
+<body>
+
+    <!-- ── NAVBAR ───────────────────────────────────────────── -->
+    <nav class="navbar">
+        <a href="../index.html" class="nav-logo">🌏 ExploreIndia</a>
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="#">Destinations</a></li>
+            <li><a href="#">Experiences</a></li>
+            <li><a href="plan-my-trip.html" class="active">Plan a Trip</a></li>
+            <li><a href="../faq.html">FAQs</a></li>
+        </ul>
+        <a href="../login.html" class="nav-btn">Log In →</a>
+        <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    </nav>
+
+    <!-- ── HERO ─────────────────────────────────────────────── -->
+    <section class="hero">
+        <div class="hero-glow"></div>
+        <div class="hero-content">
+            <span class="hero-badge">✦ Plan Your Dream Trip</span>
+            <h1 class="hero-title">
+                Tell us your dream,<br>
+                <em>we'll plan the journey.</em>
+            </h1>
+            <p class="hero-sub">Fill in a few details and we'll craft a personalised India itinerary just for you — completely free.</p>
+        </div>
+
+        <!-- Progress Steps -->
+        <div class="progress-steps">
+            <div class="step active" data-step="1">
+                <span class="step-num">01</span>
+                <span class="step-label">Preferences</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step" data-step="2">
+                <span class="step-num">02</span>
+                <span class="step-label">Destinations</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step" data-step="3">
+                <span class="step-num">03</span>
+                <span class="step-label">Travel Details</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step" data-step="4">
+                <span class="step-num">04</span>
+                <span class="step-label">Contact</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── FORM ─────────────────────────────────────────────── -->
+    <main class="form-main">
+        <form id="tripForm" class="trip-form" novalidate>
+
+            <!-- STEP 1 — PREFERENCES -->
+            <div class="form-step" id="step-1">
+                <div class="section-label">
+                    <span class="label-line"></span>
+                    <span>STEP 01</span>
+                </div>
+                <h2 class="section-title">Your Preferences</h2>
+
+                <div class="field-group">
+                    <label class="field-label">What interests you most? <span class="label-hint">(pick all that apply)</span></label>
+                    <div class="pill-grid" id="interests">
+                        <button type="button" class="pill" data-value="nature">🌿 Nature & Wildlife</button>
+                        <button type="button" class="pill" data-value="heritage">🏛 Heritage & History</button>
+                        <button type="button" class="pill" data-value="yoga">🧘 Yoga & Wellness</button>
+                        <button type="button" class="pill" data-value="festivals">🎉 Festivals & Culture</button>
+                        <button type="button" class="pill" data-value="beaches">🏖 Beaches</button>
+                        <button type="button" class="pill" data-value="mountains">🏔 Mountains</button>
+                        <button type="button" class="pill" data-value="food">🍛 Food & Cuisine</button>
+                        <button type="button" class="pill" data-value="adventure">🧗 Adventure Sports</button>
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <label class="field-label">Who are you travelling with?</label>
+                    <div class="pill-grid single" id="companions">
+                        <button type="button" class="pill" data-value="solo">🧍 Solo</button>
+                        <button type="button" class="pill" data-value="couple">💑 Couple</button>
+                        <button type="button" class="pill" data-value="family">👨‍👩‍👧 Family</button>
+                        <button type="button" class="pill" data-value="friends">👯 Group of Friends</button>
+                        <button type="button" class="pill" data-value="honeymoon">💍 Honeymoon</button>
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <label class="field-label">What is your budget style?</label>
+                    <div class="pill-grid single" id="budget">
+                        <button type="button" class="pill" data-value="budget">💚 Budget Friendly</button>
+                        <button type="button" class="pill" data-value="mid">🔵 Mid Range</button>
+                        <button type="button" class="pill" data-value="luxury">💛 Luxury</button>
+                        <button type="button" class="pill" data-value="ultra">💎 Ultra Luxury</button>
+                    </div>
+                </div>
+
+                <div class="step-nav">
+                    <button type="button" class="btn-next" onclick="goToStep(2)">Continue to Destinations →</button>
+                </div>
+            </div>
+
+            <!-- STEP 2 — DESTINATIONS -->
+            <div class="form-step hidden" id="step-2">
+                <div class="section-label">
+                    <span class="label-line"></span>
+                    <span>STEP 02</span>
+                </div>
+                <h2 class="section-title">Pick Your Destinations</h2>
+                <p class="section-sub">Select all places you'd love to visit — we'll build a route around them.</p>
+
+                <div class="dest-grid">
+                    <label class="dest-card" style="--card-bg: url('https://images.unsplash.com/photo-1599661046289-e31897846e41?w=500&q=80')">
+                        <input type="checkbox" name="destinations" value="rajasthan">
+                        <div class="dest-overlay"></div>
+                        <div class="dest-check">✓</div>
+                        <div class="dest-info">
+                            <span class="dest-tag">Heritage · Desert</span>
+                            <span class="dest-name">Rajasthan</span>
+                        </div>
+                    </label>
+                    <label class="dest-card" style="--card-bg: url('https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=500&q=80')">
+                        <input type="checkbox" name="destinations" value="kerala">
+                        <div class="dest-overlay"></div>
+                        <div class="dest-check">✓</div>
+                        <div class="dest-info">
+                            <span class="dest-tag">Nature · Backwaters</span>
+                            <span class="dest-name">Kerala</span>
+                        </div>
+                    </label>
+                    <label class="dest-card" style="--card-bg: url('https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=500&q=80')">
+                        <input type="checkbox" name="destinations" value="goa">
+                        <div class="dest-overlay"></div>
+                        <div class="dest-check">✓</div>
+                        <div class="dest-info">
+                            <span class="dest-tag">Beaches · Nightlife</span>
+                            <span class="dest-name">Goa</span>
+                        </div>
+                    </label>
+                    <label class="dest-card" style="--card-bg: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&q=80')">
+                        <input type="checkbox" name="destinations" value="ladakh">
+                        <div class="dest-overlay"></div>
+                        <div class="dest-check">✓</div>
+                        <div class="dest-info">
+                            <span class="dest-tag">Adventure · Mountains</span>
+                            <span class="dest-name">Ladakh</span>
+                        </div>
+                    </label>
+                    <label class="dest-card" style="--card-bg: url('https://images.unsplash.com/photo-1561731216-c3a4d99437d5?w=500&q=80')">
+                        <input type="checkbox" name="destinations" value="varanasi">
+                        <div class="dest-overlay"></div>
+                        <div class="dest-check">✓</div>
+                        <div class="dest-info">
+                            <span class="dest-tag">Spiritual · Culture</span>
+                            <span class="dest-name">Varanasi</span>
+                        </div>
+                    </label>
+                    <label class="dest-card" style="--card-bg: url('https://images.unsplash.com/photo-1564507592333-c60657eea523?w=500&q=80')">
+                        <input type="checkbox" name="destinations" value="agra">
+                        <div class="dest-overlay"></div>
+                        <div class="dest-check">✓</div>
+                        <div class="dest-info">
+                            <span class="dest-tag">Heritage · Wonder</span>
+                            <span class="dest-name">Agra (Taj Mahal)</span>
+                        </div>
+                    </label>
+                    <label class="dest-card" style="--card-bg: url('https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=500&q=80')">
+                        <input type="checkbox" name="destinations" value="andaman">
+                        <div class="dest-overlay"></div>
+                        <div class="dest-check">✓</div>
+                        <div class="dest-info">
+                            <span class="dest-tag">Islands · Diving</span>
+                            <span class="dest-name">Andaman</span>
+                        </div>
+                    </label>
+                    <label class="dest-card" style="--card-bg: url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=500&q=80')">
+                        <input type="checkbox" name="destinations" value="delhi">
+                        <div class="dest-overlay"></div>
+                        <div class="dest-check">✓</div>
+                        <div class="dest-info">
+                            <span class="dest-tag">Capital · History</span>
+                            <span class="dest-name">Delhi</span>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="field-group" style="margin-top: 2rem;">
+                    <label class="field-label" for="other_dest">Any other destination in mind?</label>
+                    <input type="text" id="other_dest" name="other_dest" class="text-input" placeholder="e.g. Coorg, Rishikesh, Hampi...">
+                </div>
+
+                <div class="step-nav">
+                    <button type="button" class="btn-back" onclick="goToStep(1)">← Back</button>
+                    <button type="button" class="btn-next" onclick="goToStep(3)">Continue to Travel Details →</button>
+                </div>
+            </div>
+
+            <!-- STEP 3 — TRAVEL DETAILS -->
+            <div class="form-step hidden" id="step-3">
+                <div class="section-label">
+                    <span class="label-line"></span>
+                    <span>STEP 03</span>
+                </div>
+                <h2 class="section-title">Travel Details</h2>
+
+                <div class="input-row">
+                    <div class="field-group">
+                        <label class="field-label" for="start_date">Start Date</label>
+                        <input type="date" id="start_date" name="start_date" class="text-input" required>
+                    </div>
+                    <div class="field-group">
+                        <label class="field-label" for="end_date">End Date</label>
+                        <input type="date" id="end_date" name="end_date" class="text-input" required>
+                    </div>
+                    <div class="field-group">
+                        <label class="field-label" for="travellers">Number of Travellers</label>
+                        <input type="number" id="travellers" name="travellers" class="text-input" placeholder="e.g. 2" min="1" max="50" required>
+                    </div>
+                </div>
+
+                <div class="input-row">
+                    <div class="field-group">
+                        <label class="field-label" for="depart_city">Departing From</label>
+                        <input type="text" id="depart_city" name="depart_city" class="text-input" placeholder="e.g. Mumbai, Delhi, Bangalore...">
+                    </div>
+                    <div class="field-group" style="flex: 2;">
+                        <label class="field-label" for="special_requests">Special Requests</label>
+                        <input type="text" id="special_requests" name="special_requests" class="text-input" placeholder="Vegetarian meals, wheelchair access, anniversary celebration...">
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <label class="field-label" for="duration_note">Anything else we should know?</label>
+                    <textarea id="duration_note" name="duration_note" class="text-input textarea" rows="3" placeholder="Tell us about your ideal trip — must-see places, things to avoid, pace of travel..."></textarea>
+                </div>
+
+                <div class="step-nav">
+                    <button type="button" class="btn-back" onclick="goToStep(2)">← Back</button>
+                    <button type="button" class="btn-next" onclick="goToStep(4)">Continue to Contact →</button>
+                </div>
+            </div>
+
+            <!-- STEP 4 — CONTACT -->
+            <div class="form-step hidden" id="step-4">
+                <div class="section-label">
+                    <span class="label-line"></span>
+                    <span>STEP 04</span>
+                </div>
+                <h2 class="section-title">Your Contact Details</h2>
+                <p class="section-sub">We'll send your personalised itinerary to your email within 24 hours.</p>
+
+                <div class="input-row">
+                    <div class="field-group">
+                        <label class="field-label" for="full_name">Full Name</label>
+                        <input type="text" id="full_name" name="full_name" class="text-input" placeholder="Your full name" required>
+                    </div>
+                    <div class="field-group">
+                        <label class="field-label" for="email">Email Address</label>
+                        <input type="email" id="email" name="email" class="text-input" placeholder="you@email.com" required>
+                    </div>
+                </div>
+
+                <div class="input-row">
+                    <div class="field-group">
+                        <label class="field-label" for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="text-input" placeholder="+91 XXXXX XXXXX">
+                    </div>
+                    <div class="field-group" style="display:flex; align-items:flex-end;">
+                        <label class="checkbox-row">
+                            <input type="checkbox" name="promo" id="promo">
+                            <span>Send me exclusive travel deals & India inspiration</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="step-nav">
+                    <button type="button" class="btn-back" onclick="goToStep(3)">← Back</button>
+                    <button type="submit" class="btn-submit" id="submitBtn">
+                        <span>Generate My Itinerary</span>
+                        <span class="btn-arrow">→</span>
+                    </button>
+                </div>
+                <p class="submit-note">🔒 Free of charge · No credit card required · Response within 24 hours</p>
+            </div>
+
+        </form>
+
+        <!-- SUCCESS STATE -->
+        <div class="success-state hidden" id="successState">
+            <div class="success-icon">🎉</div>
+            <h2 class="success-title">Your trip is being planned!</h2>
+            <p class="success-sub">We've received your preferences and will send a personalised itinerary to your email within 24 hours. Get ready to explore incredible India! 🇮🇳</p>
+            <a href="../index.html" class="btn-next" style="display:inline-block; text-decoration:none; margin-top:2rem;">← Back to Homepage</a>
+        </div>
+
+    </main>
+
+    <!-- ── TRUST STRIP ───────────────────────────────────────── -->
+    <section class="trust-strip">
+        <div class="trust-item">🔒 100% Secure & Private</div>
+        <div class="trust-item">✦ 50,000+ Happy Travellers</div>
+        <div class="trust-item">🗺 Expert Local Knowledge</div>
+        <div class="trust-item">📞 24/7 Support</div>
+    </section>
+
+    <!-- ── FOOTER ────────────────────────────────────────────── -->
+    <footer class="footer">
+        <div class="footer-left">
+            <div class="footer-logo">🌏 ExploreIndia</div>
+            <p class="footer-tag">Every journey tells a timeless story.</p>
+        </div>
+        <div class="footer-right">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">Contact</a>
+        </div>
+        <p class="footer-copy">© 2026 ExploreIndia. All rights reserved.</p>
+    </footer>
+
+    <script src="../website/plan-my-trip.js"></script>
+</body>
+</html>
