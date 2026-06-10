@@ -1,10 +1,23 @@
 from flask import Flask, request, jsonify, make_response
 from flask_cors import CORS
+from extensions import db             # 1. Import your SQLAlchemy extension
+from config import Config             # 2. Import your new central configuration class
 from auth import register_user, login_user, logout_user, get_user_from_token
-from config import SESSION_DURATION_DAYS
 
 app = Flask(__name__)
-CORS(app, supports_credentials=True, origins=["http://127.0.0.1:5500", "http://localhost:5500"])
+
+# 3. Load all settings (SESSION_DURATION_DAYS, CORS_ORIGINS, SQLALCHEMY_DATABASE_URI) from Config
+app.config.from_object(Config)
+
+# 4. Apply CORS using settings from the configuration class
+CORS(app, supports_credentials=True, origins=app.config['CORS_ORIGINS'])
+
+# 5. Connect SQLAlchemy to your Flask server
+db.init_app(app)
+
+# 6. Automatically generate your SQLite .db file and tables when the server launches
+with app.app_context():
+    db.create_all()
 
 
 # ── HELPER: read token from cookie ───────────────────────────
@@ -61,7 +74,11 @@ def login():
     response = make_response(
         jsonify({"success": True, "message": "Login successful", "user": user})
     )
-    max_age = SESSION_DURATION_DAYS * 24 * 60 * 60 if remember_me else None
+    
+    # 7. Read SESSION_DURATION_DAYS using app.config instead of a direct import
+    duration_days = app.config['SESSION_DURATION_DAYS']
+    max_age = duration_days * 24 * 60 * 60 if remember_me else None
+    
     response.set_cookie(
         "session_token",
         result,
@@ -98,6 +115,7 @@ def me():
         return jsonify({"logged_in": False}), 401
 
     return jsonify({"logged_in": True, "user": user}), 200
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
